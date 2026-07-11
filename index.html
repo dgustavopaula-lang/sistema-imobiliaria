@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Imobiliaria</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Sistema Imobiliaria</h1>
+        <p>Cadastro de Imoveis, Clientes e Interesses</p>
+    </header>
+
+    <nav class="abas">
+        <button class="aba-btn ativa" onclick="mostrarAba('imoveis')">Imoveis</button>
+        <button class="aba-btn" onclick="mostrarAba('clientes')">Clientes</button>
+        <button class="aba-btn" onclick="mostrarAba('interesses')">Interesses</button>
+    </nav>
+
+    <!-- ABA 1: IMOVEIS -->
+    <section id="aba-imoveis" class="aba-conteudo">
+        <h2>Cadastrar Imovel</h2>
+        <form id="form-imovel">
+            <label for="endereco">Endereco completo:</label>
+            <input type="text" id="endereco" required>
+
+            <label for="tipo-imovel">Tipo:</label>
+            <select id="tipo-imovel" required>
+                <option value="">Selecione o tipo</option>
+                <option value="Casa">Casa</option>
+                <option value="Apartamento">Apartamento</option>
+                <option value="Terreno">Terreno</option>
+                <option value="Comercial">Comercial</option>
+            </select>
+
+            <label for="area">Area (m2):</label>
+            <input type="number" id="area" min="0" step="0.01" required>
+
+            <label for="valor">Valor (R$):</label>
+            <input type="number" id="valor" min="0" step="0.01" required>
+
+            <label for="status-imovel">Status:</label>
+            <select id="status-imovel" required>
+                <option value="Disponivel">Disponivel</option>
+                <option value="Alugado">Alugado</option>
+                <option value="Vendido">Vendido</option>
+            </select>
+
+            <button type="submit">Salvar Imovel</button>
+        </form>
+
+        <h2>Imoveis Cadastrados</h2>
+        <input type="text" id="busca-imovel" placeholder="Buscar por endereco...">
+        <table id="tabela-imoveis">
+            <thead>
+                <tr>
+                    <th>Endereco</th>
+                    <th>Tipo</th>
+                    <th>Area</th>
+                    <th>Valor</th>
+                    <th>Status</th>
+                    <th>Acoes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Preenchido via JavaScript -->
+            </tbody>
+        </table>
+    </section>
+
+    <!-- ABA 2: CLIENTES -->
+    <section id="aba-clientes" class="aba-conteudo" style="display: none;">
+        <h2>Cadastrar Cliente</h2>
+        <form id="form-cliente">
+            <label for="nome-cliente">Nome completo:</label>
+            <input type="text" id="nome-cliente" required>
+
+            <label for="telefone-cliente">Telefone:</label>
+            <input type="text" id="telefone-cliente" placeholder="(00) 00000-0000" required>
+
+            <label for="interesse-cliente">Tipo de interesse:</label>
+            <select id="interesse-cliente" required>
+                <option value="Comprar">Comprar</option>
+                <option value="Alugar">Alugar</option>
+            </select>
+
+            <button type="submit">Salvar Cliente</button>
+        </form>
+
+        <h2>Clientes Cadastrados</h2>
+        <input type="text" id="busca-cliente" placeholder="Buscar por nome...">
+        <table id="tabela-clientes">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>Interesse</th>
+                    <th>Acoes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Preenchido via JavaScript -->
+            </tbody>
+        </table>
+    </section>
+
+    <!-- ABA 3: INTERESSES (vincular cliente a imovel) -->
+    <section id="aba-interesses" class="aba-conteudo" style="display: none;">
+        <h2>Vincular Cliente a Imovel</h2>
+        <form id="form-interesse">
+            <label for="cliente-select">Cliente:</label>
+            <select id="cliente-select" required>
+                <option value="">Selecione um cliente</option>
+            </select>
+
+            <label for="imovel-select">Imovel:</label>
+            <select id="imovel-select" required>
+                <option value="">Selecione um imovel</option>
+            </select>
+
+            <button type="submit">Registrar Interesse</button>
+        </form>
+
+        <h2>Interesses Registrados</h2>
+        <div id="lista-interesses">
+            <!-- Preenchido via JavaScript -->
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
